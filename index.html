@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development Engineer Resume - Amazon Internship</title>
+    <!-- Keeping all the original CSS styles -->
+    <style>
+        :root {
+            --amazon-orange: #FF9900;
+            --amazon-dark: #232F3E;
+            --amazon-light: #EAEDED;
+            --amazon-yellow: #FFD814;
+            --amazon-yellow-hover: #F7CA00;
+            --amazon-orange-light: #FFA41C;
+            --amazon-link: #007185;
+            --amazon-success: #007600;
+            --amazon-price: #B12704;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: var(--amazon-light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            0% { background-position: -100px; }
+            40%, 100% { background-position: 140px; }
+        }
+
+        .breadcrumb {
+            max-width: 1300px;
+            margin: 0 auto 20px;
+            font-size: 14px;
+            color: var(--amazon-link);
+            cursor: pointer;
+            padding: 10px 0;
+        }
+
+        .breadcrumb:hover {
+            text-decoration: underline;
+            color: #C7511F;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(250px, 300px) minmax(500px, 1fr) minmax(250px, 300px);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .tech-container {
+            margin-top: 15px;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-item:hover {
+            border-color: var(--amazon-link);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+        }
+
+        .tech-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .tech-item:hover::after {
+            opacity: 1;
+            animation: shine 1s ease-in-out;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h4 {
+            color: #0F1111;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .stars {
+            color: var(--amazon-orange-light);
+            margin-right: 8px;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .stars::after {
+            content: '★★★★★';
+            position: absolute;
+            left: 0;
+            color: var(--amazon-orange);
+            width: 0;
+            overflow: hidden;
+            transition: width 0.3s ease;
+        }
+
+        .stars:hover::after {
+            width: 100%;
+        }
+
+        .endorsements {
+            color: var(--amazon-link);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .endorsements:hover {
+            color: #C7511F;
+            text-decoration: underline;
+        }
+
+        .amazon-choice {
+            display: inline-block;
+            background: var(--amazon-dark);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin: 10px 0;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .cgpa {
+            color: var(--amazon-price);
+            font-size: 20px;
+            margin: 15px 0 5px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .education {
+            color: #565959;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .experience-item {
+            margin-bottom: 16px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item:hover {
+            border-color: var(--amazon-link);
+            box-shadow: 0 2px 8px rgba(15, 17, 17, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 0;
+            background: var(--amazon-orange);
+            transition: height 0.3s ease;
+        }
+
+        .experience-item:hover::before {
+            height: 100%;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #0F1111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .experience-title::after {
+            content: '→';
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover .experience-title::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .experience-duration {
+            color: #565959;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .experience-points {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .experience-points li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .experience-points li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #565959;
+        }
+
+        .award-badge {
+            background: linear-gradient(135deg, var(--amazon-orange), var(--amazon-orange-light));
+            color: #111;
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-size: 12px;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .main-section {
+            margin-bottom: 24px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .main-section h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #0F1111;
+        }
+
+        .right-column {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn i {
+            font-size: 16px;
+            font-style: normal;
+        }
+
+        .btn-primary {
+            background: var(--amazon-yellow);
+            border-color: var(--amazon-yellow-hover);
+            color: #0F1111;
+        }
+
+        .btn-primary:hover {
+            background: var(--amazon-yellow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--amazon-orange-light);
+            border-color: #FF8F00;
+            color: #0F1111;
+        }
+
+        .btn-secondary:hover {
+            background: #FF8F00;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0;
+            color: #0F1111;
+            font-size: 14px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .check-icon {
+            color: var(--amazon-success);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .right-column {
+                position: static;
+            }
+        }
+    </style>
+
+    <script>
+        // Add hover effect to tech items
+        document.addEventListener('DOMContentLoaded', function() {
+            const techItems = document.querySelectorAll('.tech-item');
+            
+            techItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add rating interaction
+            const stars = document.querySelector('.stars');
+            if (stars) {
+                stars.addEventListener('mousemove', function(e) {
+                    const width = (e.offsetX / this.offsetWidth) * 100;
+                    this.style.setProperty('--rating-width', `${width}%`);
+                });
+
+                stars.addEventListener('mouseleave', function() {
+                    this.style.setProperty('--rating-width', '0%');
+                });
+            }
+
+            // Add smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add intersection observer for fade-in animation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.main-section, .experience-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.5s ease-out';
+                observer.observe(item);
+            });
+        });
+
+        // Add dynamic skill level indication
+        const techItems = document.querySelectorAll('.tech-item');
+        techItems.forEach(item => {
+            const level = item.getAttribute('data-level');
+            if (level) {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tech-tooltip';
+                tooltip.textContent = level;
+                tooltip.style.position = 'absolute';
+                tooltip.style.bottom = '100%';
+                tooltip.style.left = '50%';
+                tooltip.style.transform = 'translateX(-50%)';
+                tooltip.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                tooltip.style.color = 'white';
+                tooltip.style.padding = '4px 8px';
+                tooltip.style.borderRadius = '4px';
+                tooltip.style.fontSize = '12px';
+                tooltip.style.opacity = '0';
+                tooltip.style.transition = 'opacity 0.3s ease';
+                
+                item.style.position = 'relative';
+                item.appendChild(tooltip);
+                
+                item.addEventListener('mouseenter', () => tooltip.style.opacity = '1');
+                item.addEventListener('mouseleave', () => tooltip.style.opacity = '0');
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="breadcrumb">‹ Back to candidates</div>
+
+    <div class="container">
+        <!-- Left Column -->
+
+        <div class="card">
+            <h2 style="font-size: 18px; font-weight: 700;">Tech Stack</h2>
+            <div class="tech-container">
+                <div class="tech-grid">
+                    <div class="tech-item" data-level="Expert">Python</div>
+                    <div class="tech-item" data-level="Advanced">SQL</div>
+                    <div class="tech-item" data-level="Advanced">Machine Learning</div>
+                    <div class="tech-item" data-level="Intermediate">AWS</div>
+                    <div class="tech-item" data-level="Advanced">Data Mining</div>
+                    <div class="tech-item" data-level="Advanced">Big Data</div>
+                    <div class="tech-item" data-level="Advanced">ETL</div>
+                    <div class="tech-item" data-level="Expert">Statistical Analysis</div>
+                    <div class="tech-item" data-level="Advanced">TensorFlow</div>
+                    <div class="tech-item" data-level="Advanced">PyTorch</div>
+                    <div class="tech-item" data-level="Expert">Scikit-learn</div>
+                    <div class="tech-item" data-level="Advanced">Data Visualization</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 15px;">Skills Breakdown</h2>
+                
+                <div class="skill-category">
+                    <h4>Core Data Science</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Expert">Reinforcement Learning</div>
+                        <div class="tech-item" data-level="Expert">Data Handling</div>
+                        <div class="tech-item" data-level="Advanced">Streamlit</div>
+                        <div class="tech-item" data-level="Expert">Machine Learning</div>
+                        <div class="tech-item" data-level="Advanced">Predictive Analytics</div>
+                        <div class="tech-item" data-level="Advanced">Statistical Modeling</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>AI/ML Frameworks & Tools</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Expert">Scikit-learn</div>
+                        <div class="tech-item" data-level="Advanced">Keras</div>
+                        <div class="tech-item" data-level="Advanced">NLTK</div>
+                        <div class="tech-item" data-level="Advanced">XGBoost</div>
+                        <div class="tech-item" data-level="Advanced">MLflow</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Development & Tools</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Expert">Python</div>
+                        <div class="tech-item" data-level="Advanced">SQL</div>
+                        <div class="tech-item" data-level="Advanced">Git</div>
+                        <div class="tech-item" data-level="Intermediate">AWS</div>
+                        <div class="tech-item" data-level="Advanced">Jupyter</div>
+                        <div class="tech-item" data-level="Advanced">Docker</div>
+                        <div class="tech-item" data-level="Advanced">REST APIs</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Data Processing & Analytics</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Expert">NumPy</div>
+                        <div class="tech-item" data-level="Expert">Pandas</div>
+                        <div class="tech-item" data-level="Advanced">SciPy</div>
+                        <div class="tech-item" data-level="Advanced">Data Mining</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Security & Best Practices</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Intermediate">Cyber Security</div>
+                        <div class="tech-item" data-level="Advanced">Data Privacy</div>
+                        <div class="tech-item" data-level="Advanced">Code Quality</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="card">
+            <h2 style="font-size: 18px; font-weight: 700;">Tech Stack</h2>
+            <div class="tech-container">
+                <div class="tech-grid">
+                    <div class="tech-item" data-level="Expert">Python</div>
+                    <div class="tech-item" data-level="Advanced">Java</div>
+                    <div class="tech-item" data-level="Advanced">C++</div>
+                    <div class="tech-item" data-level="Advanced">SQL</div>
+                    <div class="tech-item" data-level="Advanced">R</div>
+                    <div class="tech-item" data-level="Advanced">Data Structures</div>
+                    <div class="tech-item" data-level="Advanced">Algorithms</div>
+                    <div class="tech-item" data-level="Advanced">Machine Learning</div>
+                    <div class="tech-item" data-level="Advanced">Deep Learning</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 15px;">Skills Breakdown</h2>
+                
+                <div class="skill-category">
+                    <h4>Machine Learning & AI</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Advanced">TensorFlow</div>
+                        <div class="tech-item" data-level="Advanced">PyTorch</div>
+                        <div class="tech-item" data-level="Advanced">Keras</div>
+                        <div class="tech-item" data-level="Advanced">Scikit-learn</div>
+                        <div class="tech-item" data-level="Advanced">NLTK</div>
+                        <div class="tech-item" data-level="Advanced">XGBoost</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Development Tools</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Advanced">VS Code</div>
+                        <div class="tech-item" data-level="Advanced">PyCharm</div>
+                        <div class="tech-item" data-level="Advanced">Jupyter Notebook</div>
+                        <div class="tech-item" data-level="Advanced">Git</div>
+                        <div class="tech-item" data-level="Advanced">Docker</div>
+                        <div class="tech-item" data-level="Advanced">AWS</div>
+                        <div class="tech-item" data-level="Advanced">GCP</div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Data Science & Analytics</h4>
+                    <div class="tech-grid">
+                        <div class="tech-item" data-level="Advanced">NumPy</div>
+                        <div class="tech-item" data-level="Advanced">Pandas</div>
+                        <div class="tech-item" data-level="Advanced">SciPy</div>
+                        <div class="tech-item" data-level="Advanced">Matplotlib</div>
+                        <div class="tech-item" data-level="Advanced">Seaborn</div>
+                        <div class="tech-item" data-level="Advanced">Plotly</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Middle Column -->
+        <div class="card">
+            <h1 style="font-size: 24px; font-weight: 500; margin-bottom: 8px;">Badal Gupta - Software Development Engineer</h1>
+            <div style="font-size: 14px; color: #565959; line-height: 1.4;">
+                +1 (518) 699-2479 | badal.a.gupta0408@gmail.com
+            </div>
+
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="endorsements">Software Development Excellence</span>
+            </div>
+
+            <div class="main-section">
+                <h3>About Me</h3>
+                <p style="color: #333; line-height: 1.4; font-size: 14px;">
+                    Computer Science graduate student with strong foundation in data structures, algorithms, and distributed systems. 
+                    Experienced in building scalable applications using Java, Python, and C++, with particular expertise in 
+                    object-oriented design and system optimization. Published researcher with proven track record in developing 
+                    end-to-end solutions, from architecture design to production deployment. Demonstrated ability to handle large-scale 
+                    systems processing 100,000+ concurrent requests and implementing fault-tolerant architectures. Seeking Summer 2025 
+                    SDE internship at Amazon to contribute to innovative, customer-focused solutions while leveraging my experience in 
+                    distributed systems, microservices architecture, and performance optimization.
+                </p>
+            </div>
+
+            <div class="amazon-choice">
+                Amazon's Choice for Software Development
+            </div>
+
+            <div class="main-section">
+                <h3>Relevant Coursework</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">Data Structures & Algorithms</div>
+                    <div class="tech-item">Operating Systems</div>
+                    <div class="tech-item">Database Management</div>
+                    <div class="tech-item">Software Engineering</div>
+                    <div class="tech-item">System Design</div>
+                    <div class="tech-item">Object-Oriented Programming</div>
+                    <div class="tech-item">Distributed Systems</div>
+                    <div class="tech-item">Computer Networks</div>
+                </div>
+            </div>
+
+            <div class="cgpa">3.3/4 CGPA</div>
+            <div class="education">
+                MS Data Sciences @ SUNY Albany (Expected Dec 2026)
+            </div>
+
+            <div class="cgpa">9.3/10 CGPA</div>
+            <div class="education">
+                B.Tech Computer Science @ Indus University (Apr 2024)
+            </div>
+
+            <div class="main-section">
+                <h3>Professional Experience</h3>
+                <div class="experience-item">
+                    <div class="experience-title">Machine Learning Research Intern</div>
+                    <div class="experience-duration">Indus University | June 2022 - February 2024</div>
+                    <ul class="experience-points">
+                        <li>Led development of ML models for heart failure prediction achieving 92% accuracy using ensemble methods</li>
+                        <li>Published research findings in Web of Science indexed journal and presented at university conference</li>
+                        <li>Developed end-to-end ML pipeline processing 100,000+ medical records with automated feature engineering</li>
+                        <li>Implemented model optimization techniques resulting in 45% reduction in inference time</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-title">Data Analyst Intern</div>
+                    <div class="experience-duration">Towa Pharma Pvt. Ltd. | June 2023 - July 2023</div>
+                    <ul class="experience-points">
+                        <li>Engineered ML models for employee attrition prediction achieving 5% reduction in turnover</li>
+                        <li>Developed data processing pipelines handling 50,000+ employee records across 20+ departments</li>
+                        <li>Created automated reporting system reducing analysis time by 75% using Python and SQL</li>
+                        <li>Identified key attrition factors leading to implementation of retention strategies saving $200,000+ annually</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h3>Key Projects</h3>
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Story Generation from Multiple Images using NLP</div>
+                        <span class="award-badge">ML Pipeline</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Developed ML pipeline integrating BLIP and Falcon models for image understanding and text generation</li>
+                        <li>Built full-stack web application using Anvil framework with custom API endpoints</li>
+                        <li>Implemented robust error handling and optimization for production deployment</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Spotify Song Popularity Predictor</div>
+                        <span class="award-badge">Machine Learning</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Engineered ML system with 89% prediction accuracy using ensemble learning (Random Forest + XGBoost)</li>
+                        <li>Reduced model inference time by 45% through optimized feature engineering pipeline</li>
+                        <li>Processed 100,000+ song records with 40+ features for comprehensive analysis</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Valorant Matchmaking Simulator</div>
+                        <span class="award-badge">System Design</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Developed matchmaking algorithm processing 10,000+ player profiles with 95% accuracy in skill-based matching</li>
+                        <li>Improved player satisfaction by 40% through implementation of balanced team composition algorithm</li>
+                        <li>Built scalable system handling 1000+ concurrent users across 5 different game modes</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Cardiovascular Disease Prediction System</div>
+                        <span class="award-badge">Healthcare ML</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Created ML models achieving 90%+ accuracy in early detection of cardiovascular diseases</li>
+                        <li>Implemented multiple classifiers (Random Forest, XGBoost, SVM) for optimal prediction</li>
+                        <li>Developed interactive dashboards for real-time model performance monitoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h3>Publications</h3>
+                <div class="experience-item">
+                    <div class="experience-title">Prediction of Heart Failure using Machine Learning Algorithms</div>
+                    <div class="experience-duration">Indian Journal of Natural Sciences (Web of Science Scopus Journal) | February 2024</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-title">A Comparative Review of Machine Learning Techniques for Predicting Used Car Prices</div>
+                    <div class="experience-duration">International Journal of Research and Analytical Reviews (Impact Factor: 7.17) | October 2023</div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h3>Certifications</h3>
+                <div class="experience-item">
+                    <ul class="experience-points">
+                        <li>BCG Data Science Job Simulation - Forge</li>
+                        <li>AWS Natural Language Processing</li>
+                        <li>Foundation: Data, Data, Everywhere - Google/Coursera</li>
+                        <li>Machine Learning Using Python - Indus University</li>
+                        <li>Python 3 Ultimate Guide - Udemy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h3>Additional Skills</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: #0F1111;">Languages</div>
+                    <div class="tech-grid">
+                        <div class="tech-item">English (Professional Working)</div>
+                        <div class="tech-item">Hindi (Native)</div>
+                        <div class="tech-item">Gujarati (Native)</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: #0F1111;">Soft Skills</div>
+                    <div class="tech-grid">
+                        <div class="tech-item">Project Leadership</div>
+                        <div class="tech-item">Team Collaboration</div>
+                        <div class="tech-item">Technical Documentation</div>
+                        <div class="tech-item">Communication</div>
+                        <div class="tech-item">Problem-Solving</div>
+                        <div class="tech-item">Critical Thinking</div>
+                        <div class="tech-item">Agile & Scrum Methodologies</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-section">
+                <h3>Personal Achievements</h3>
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Academic Excellence</div>
+                        <span class="award-badge">Top Performance</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Maintained 9.30/10 GPA throughout undergraduate studies</li>
+                        <li>Rank 3rd at 18th SOF National Science Olympiad</li>
+                        <li>Rank 2nd at 9th SOF International Mathematics Olympiad</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div class="experience-title">Competitive Achievements</div>
+                        <span class="award-badge">Gaming Excellence</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Runner-up in University E-Sports Tournament (Rocket League)</li>
+                        <li>Runner-up in University E-Sports Tournament (Valorant)</li>
+                        <li>State level Chess Championship Participation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="card right-column">
+            <a href="resume.pdf" download class="btn btn-primary">
+                Download Resume
+            </a>
+            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                <a href="https://www.linkedin.com/in/badal-gupta04/" target="_blank" class="btn" style="background: #0A66C2; color: white; flex: 1;">
+                    <i style="margin-right: 5px;">in</i> LinkedIn
+                </a>
+                <a href="https://github.com/Cloudyboiii" target="_blank" class="btn" style="background: #24292E; color: white; flex: 1;">
+                    <i style="margin-right: 5px;">⌥</i> GitHub
+                </a>
+            </div>
+            <a href="mailto:badal.a.gupta0408@gmail.com" class="btn btn-secondary">
+                Contact Now
+            </a>
+            
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Available for Summer 2025
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Located in Albany, New York
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Eligible to work in US
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                Current MS Student
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 16px; margin-bottom: 10px;">Key Achievements</h3>
+                <div class="experience-item">
+                    <ul class="experience-points">
+                        <li>Published in Web of Science Journal</li>
+                        <li>9.30/10 Undergraduate GPA</li>
+                        <li>Rank 3rd at 18th SOF National Science Olympiad</li>
+                        <li>Rank 2nd at 9th SOF International Mathematics Olympiad</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
